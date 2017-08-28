@@ -1,0 +1,46 @@
+## Integrating GitHub and Visual Studio projects
+
+This [document](https://social.technet.microsoft.com/wiki/contents/articles/38935.visual-studio-2017-install-and-use-github-extension.aspx) gives MSFT's online instructions.
+ 
+1. Open Visual Studio Installer. Update it if prompted.
+2. Use the drop-down menu under the Community edition to select Modify.
+3. Click on the Individual Components tab.
+4. Under Code Tools, check the box GitHub extension for Visual Studio.
+5. In the lower-right corner of the window, click Modify.
+6. Close any work you have open and close Visual Studio. Click continue if necessary.
+7. Launch Visual Studio.
+8. In the Team Explorer tab, GitHub should appear.
+9. In VS, click the Tools menu, go to Extensions and Updates, go to Updates, and click VS Marketplace.
+10. Update the GitHub extension.
+11. Close and relaunch VS to install the updates.
+12. Make GitHub the default source control by going to Tools, Options, Source Control, Plug-in Selection.
+13. Select Git.
+14. To use the GitHub extension...
+15. From the Team menu in VS, click Manage Connections.
+16. Under GitHub, click Connect...
+17. Sign in to your account.
+18. To create a GitHub repository from an existing local repository...
+19. Go to the GitHub section of Team Explorer.
+20. Click Create.
+21. A GitHub window will pop up.
+22. Enter a name and description for your repository as you would like it to appear on GitHub.
+23. Next to Local Path, browse to the location you want a new Git repository.
+24. Choose your license.
+25. Click Create.
+26. Browse to your repository on GitHub!
+27. Also, you will see your local path in Solution Explorer. (This may take a minute to pop up.)
+28. Go to Team Explorer.
+29. Near the top, click on Creat a new project or solution.
+30. When you create your new project, make sure the box in the lower-right corner is checked for Create New Git Repository.
+31. Now you have a project in a local Git repository!
+32. In Team Explorer, click Sync.
+33. Under the master branch, click Sync.
+34. Wait a minute or so while it syncs.
+35. A success message should appear.
+36. In Team Explorer, use the drop-down menu to select Changes.
+37. Write a comment.
+38. Click Commit All and wait.
+39. A message will appear: "Commit xxxxxx created locally. Sync to share your changes with the server."
+40. Click Sync within the message.
+41. Under Outgoing Commits, click Push. Wait. 
+42. Go to your GitHub repository to verify the push worked!
