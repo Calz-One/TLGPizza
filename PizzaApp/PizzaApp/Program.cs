@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Linq;
 using System.Xml;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace PizzaApp
 {
@@ -13,44 +15,42 @@ namespace PizzaApp
     {
         static void Main(string[] args)
         {
-            // Selects the files from a directory
-            //string[] fileEntries = Directory.GetFiles(@"C:\Users\Student\Source\Repos\TLGPizza\PizzaApp\datagrams");
-
-            // loads the content of the first file
-            //var root = XElement.Load(fileEntries[0]);
-            //string stringRoot = (string)root;
-
+            // Establishes the file to be read
             XmlTextReader reader = new XmlTextReader(@"C:\Users\Student\Source\Repos\TLGPizza\PizzaApp\datagrams\Datagram.xml");
 
+            // For each tag within the XML:
+            ShowElements(reader);
+
+        }
+
+        static void ShowElements(XmlTextReader reader)
+        {
+            // For each tag within the XML:
             while (reader.Read())
             {
-                // Do some work here on the data.
-                if (reader.Name == "Customer")
+                // For all elements, not including whitespace
+                if (reader.NodeType.ToString() != "Whitespace")
                 {
+                    //render element information
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append($"{reader.Name}:{reader.NodeType}");
+                    if (reader.Value.Length > 0)
+                    {
+                        sb.Append($":{reader.Value}");
+                    }
+                    // if the element has attributes
                     if (reader.HasAttributes)
                     {
-
-                        while (reader.MoveToNextAttribute()) // Read the attributes.
-                            Console.Write(" " + reader.Name + "='" + reader.Value + "'");
-
-                        //Console.WriteLine(reader.Name);
-                        //Console.WriteLine(reader.NodeType);
+                        // Render attribute information
+                        while (reader.MoveToNextAttribute())
+                        {
+                            sb.Append($" | {reader.Name}: {reader.Value}");
+                        }
                     }
+                    Console.WriteLine(sb);
                 }
+
             }
-            Console.ReadLine();
-
-            // Queries that file
-            //IEnumerable<XElement> query = from el in root.Elements("Datagram")
-            //            select el;
-
-            //// Writes out the contents of that query
-            //foreach (XElement el in query)
-            //{
-            //    Console.WriteLine("Inside the loop");
-            //    Console.WriteLine(el);
-            //}
-
         }
     }
 }
